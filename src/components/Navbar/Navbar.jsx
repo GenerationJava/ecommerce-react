@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../../assets/logo.png";
 import cart from "../../assets/cart.svg";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 // Importamos el hook useTheme desde nuestro contexto de tema personalizado
 import { useTheme } from "../../context/themeContext";
@@ -32,10 +33,31 @@ export default function Navbar() {
 
       {/* Menú de navegación con color de texto dinámico */}
       <ul className="nav-menu">
-        <li style={{ color: colors.text }}>Tienda</li>
-        <li style={{ color: colors.text }}>Hombre</li>
-        <li style={{ color: colors.text }}>Mujer</li>
-        <li style={{ color: colors.text }}>Niños</li>
+        <Link
+          to={"/tienda"}
+          style={{ color:colors.text, textDecoration:"none"}}
+        >
+          <li style={{ color: colors.text }}>Tienda</li>
+        </Link>
+        <Link
+          to={"/hombre"}
+          style={{ color:colors.text, textDecoration:"none"}}
+        >
+          <li style={{ color: colors.text }}>Hombre</li>
+        </Link>
+        <Link
+          to={"/mujer"}
+          style={{ color:colors.text, textDecoration:"none"}}
+        >
+          <li style={{ color: colors.text }}>Mujer</li>
+        </Link>
+        <Link
+         to={"/ninos"}
+          style={{ color:colors.text, textDecoration:"none"}}
+         >
+          <li style={{ color: colors.text }}>Niños</li>
+        </Link>
+        
       </ul>
 
       {/* Contenedor de login/carrito/tema */}

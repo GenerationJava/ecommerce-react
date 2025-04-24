@@ -6,6 +6,7 @@ import {
   useTheme, // Hook de MUI para acceder al tema
 } from "@mui/material";
 import { useTheme as useCustomTheme } from "../../context/themeContext"; // Nuestro contexto personalizado para el modo oscuro
+import { Link as RouterLink } from "react-router-dom";
 
 // Componente Footer construido con Material-UI, es responsivo por defecto
 export default function Footer() {
@@ -50,7 +51,8 @@ export default function Footer() {
         >
           {/* Componente Link de MUI */}
           <Link
-            href="#nosotros"
+            component={RouterLink}
+            to="/nosotros"
             color="inherit" // Hereda el color del contenedor padre
             underline="hover" // Subrayado solo al hover
             sx={{
@@ -63,7 +65,8 @@ export default function Footer() {
           </Link>
 
           <Link
-            href="#productos"
+            component={RouterLink}
+            to="/tienda"
             color="inherit"
             underline="hover"
             sx={{
@@ -76,7 +79,8 @@ export default function Footer() {
           </Link>
 
           <Link
-            href="#contacto"
+            component={RouterLink}
+            to="/contacto"
             color="inherit"
             underline="hover"
             sx={{
