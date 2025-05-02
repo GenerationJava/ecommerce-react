@@ -80,7 +80,7 @@ export default function Footer() {
 
           <Link
             component={RouterLink}
-            to="/contacto"
+            to="/agregar"
             color="inherit"
             underline="hover"
             sx={{
@@ -89,7 +89,7 @@ export default function Footer() {
               },
             }}
           >
-            Contacto
+            Agregar producto
           </Link>
         </Box>
 

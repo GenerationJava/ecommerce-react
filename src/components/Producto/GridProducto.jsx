@@ -11,9 +11,43 @@ export default function GridProducto({ categoria }) {
     const [productos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
+    const [categorias, setCategorias] = useState([]);
 
     //Este objeto permitirá indicar la categoría de productos
-    const categorias = { hombre: "HOMBRE", mujer: "MUJER", ninos: "NINOS" };
+    //const categorias = { hombre: "HOMBRE", mujer: "MUJER", ninos: "NINOS" };
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // Primero obtenemos las categorías
+                const categoriasData = await productoService.getCategorias();
+                setCategorias(categoriasData);
+                
+                // Si hay una categoría específica, obtenemos sus productos
+                if (categoria) {
+                    const categoriaEncontrada = categoriasData.find(
+                        cat => cat.nombre.toLowerCase() === categoria.toLowerCase()
+                    );
+                    
+                    if (!categoriaEncontrada) {
+                        throw new Error('Categoría no encontrada');
+                    }
+                    
+                    const data = await productoService.getByCategory(categoriaEncontrada.nombre);
+                    setProductos(data);
+                }
+            } catch (error) {
+                setError(error.message);
+                console.error(error);
+            } finally {
+                setCargando(false);
+            }
+        };
+        
+        fetchData();
+    }, [categoria]);
+
 
     //Usamos el useEffect para llamar a axios y al método get()
     useEffect(() => {

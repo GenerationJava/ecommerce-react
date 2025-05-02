@@ -8,6 +8,8 @@ import Tienda from './pages/Tienda'
 import Hombre from './pages/Hombre'
 import Mujer from './pages/Mujer'
 import Ninos from './pages/Ninos'
+import ProductoForm from './components/Producto/ProductoForm'
+import ProductoDetalles from './components/Producto/ProductoDetalles'
 
 function App() {
 
@@ -24,9 +26,10 @@ function App() {
                 <Route path='/hombre' element={<Hombre />}></Route>
                 <Route path='/mujer' element={<Mujer />}></Route>
                 <Route path='/ninos' element={<Ninos />}></Route>
-           
                 <Route path='/nosotros' element={<Nosotros />}></Route>
-             
+                <Route path='/agregar' element={<ProductoForm />}></Route>
+                <Route path='/producto/:id' element={<ProductoDetalles />}></Route>
+              
             {/* Otros componentes */}
             </Routes>
           <Footer />
